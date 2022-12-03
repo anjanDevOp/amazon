@@ -1,0 +1,293 @@
+Session-1:
+ShellScript: Shell script is a program it can take the commands whatever the user is typing and it gives those command to OS to execute
+Shell is an interface between os and the user
+
+Types of Shell:
+Available shells on servers are:
+-bash
+-sh
+shells which are not available on servers are:
+-csh
+-tsh
+-ksh
+-zsh
+ sh-older version of shell--default
+ bash--advanced version--default
+
+/etc---shells will be available in your etc directory
+
+cat /etc/shells--display types of default shells available in etc dir'
+
+cd DevOps/Shells----->relative path---->current dir'---->DevOps/Shells
+cd /DevOps/Shells---->absolute path--->root dir;--->DevOps/Shells
+print("value of a is:",a)
+%d, %s, %f---access apecifiers
+
+
+ShellScrit File creation:
+--------------------------
+vi hello.sh
+echo "hello good morning"
+echo "hi good afternoon"
+echo "Shellscript session"
+date
+cal
+
+
+cleanup.sh---->tmp---
+dbbackup.sh---->
+serverresoucremonitor.sh
+cpu utilization
+RAM
+hardish
+threshold
+
+Why we need shellscript?
+------------------------
+-Automate your regular jobs
+-Taking database backup
+-Monitoring several server resources like cpu utilization, and memory utilization
+-portable(can be executed in any UNIX like OS without any modificatio)
+
+AIX server-->OS-->IBM
+HPUNIX-->OS-->HP
+
+vi FirstScript.s
+#!/bin/bash--->shebang line
+
+./FirstScript.sh
+sh FirstScript.sh
+
+Session-2:
+------------
+Run ShellScript specifi lines from files in debug mode:
+set -x
+set +x
+
+Run entire file in debug mode:
+------------------------------
+sh -x FirstScript.sh
+bash -x FirstScript.sh
+
+File Naming Convention:
+-----------------------
+- A file name can be a maximum of 255 characters
+- the name may contain alphabets, digits, dots and underscore
+- system commands /Linux reserve words cannot be used for file names
+- file system is case sensitive 
+- some of valid filename is Linux are:
+
+firstName--->Camelcase
+FirstName,Firstname--->pascal case
+first1
+First.Script
+First_Script
+mkdir ls--->wrong
+if, for--->keywords/reserved words
+
+mv presentname newname
+command used to display all reserve words in Linux:
+compgen -c
+
+Comments:
+Single line comment:
+#
+Multiple line comment:
+<<Pavithra
+--------
+--------
+Pavithra
+
+
+Variables:
+----------
+PWD pwd
+
+System defined variable 
+user defined variable
+
+
+int a = 10;
+float b = 3.19;
+String Name = "Linux";
+
+a=10
+b=20
+c=30
+f=3.24
+Name="String"
+echo "a value is:" $a
+echo "b value is:" $b
+echo "c value is:" $c
+echo "f value is:" $f
+echo "Name value is:" $Name
+Command Line argument:
+----------------------
+sh FirstScript.sh
+sh hello
+sh udvars.sh dbname /opt
+
+During shell script execution, values passing through command prompt is called as command line arguments.
+
+System defined----uppercase
+User defined----lowercase
+
+
+vi clargs.sh dbname /opt
+echo $1--->standard output-->firstargument value
+echo $2--->errors/second argument value
+echo $3--->argument value
+echo $0--->scriptname
+echo $11--->append 1 with first argument value
+echo ${11}--->provide 11th argument value
+echo $#--->no of arguments
+echo $*--->all the arguments
+echo $@--->all the arguments
+echo $$--->PID
+echo $?--->gives previous command execution status
+127
+
+sh clargs1.sh dbname /opt
+vi clargs1.sh 
+
+if [ $# -eq 2]
+then
+echo $1
+echo $2
+echo $3
+echo $0
+cal
+echo $*
+echo $@
+echo $$
+echo $11
+echo ${11}
+echo $#
+echo $?
+else 
+echo "Please enter second argument"
+echo "condition exit"
+fi
+
+vi install.sh
+echo "Java installation"
+if[ $? -eq $0 ]
+then
+echo "java has already installed"
+else
+echo "java is installing"
+yum install java-11-openjdk-devel -y
+fi
+
+string: set of sequence of characters are called as string
+' '
+" "
+vi string.sh
+name="sai kumar vishnu vardhan shakeeb are students for Offline DevOps class"
+echo "name value is:" $name
+echo ${name}
+echo ${#name}
+echo ${name:20}
+echo ${name:14:20}
+echo ${name: (-8)}
+echo ${name:0:2}
+
+
+Operators: operators are symbols used in order to manipulate operands to perform a task
+Ex: sum = a + b
+
+Arithmetic Operators:
+---------------------
++--->addition
+- --> subtraction 
+* ---> multiplication
+/--->division
+%--->modulus
+\*--->special operator
+
+vi arithmeticop.sh
+expr 2 + 3
+expr 2 - 1
+expr 4 * 5
+expr 8 / 2
+expr 2 \* 3
+expr 10 % 2
+echo "Addition of two numbers are:" `expr 2 + 3`
+
+read
+
+Write a program to add 2 numbers:
+---------------------------------
+
+vi read1.sh
+echo "Enter the first number:"
+read num1
+echo "Enter the second number:"
+read num2
+echo "Sum of two numbers are:" `expr $num1 + $num2`
+
+vi read2.sh
+echo "Enter some DevOps Tools"
+read devopstool
+echo "DevOps tools are:", $devopstool
+
+vi read3.sh
+
+read -p "Please enter the username:"
+read -p "Pleasen enter the password:"
+echo "Given username is:" $username
+echo "Given Password is:" $password
+
+Input and Output redirection Symbols:
+-------------------------------------
+>---->redirecting O/p
+>>--->append o/p 
+<--->standard i/p
+
+File discriptors:
+-----------------
+0--->i/p
+1--->o/p
+2--->error
+
+Control statements:
+-------------------
+if [condition]
+then
+--statements---
+else
+--statments---
+
+vi ifelse.sh
+a = 10
+b = 20
+c = 30
+if [ [($a -gt $b) && ($a -gt $c)] ]
+then
+echo "$a is bigger than $b and $c"
+elif [ [($b -gt $c) && ($b -gt $a)] ]
+then
+echo "$b is bigger than $a and $c"
+else
+echo "$c is bigger"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
